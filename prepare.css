@@ -1,0 +1,512 @@
+/* ==========================================================================
+   共通設定 ＆ ヘッダー（guide.cssのデザインシステムを完全継承）
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    color: #333333;
+    background-color: #f8fafc;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+/* 飛行機ロゴ（下線強制クリア・ホームリンク対応） */
+nav .logo {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Arial Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+nav .logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #eef7fc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M21 16v-2l-8-5V3.5c0-.83-.67-1-1.5-1s-1.5.17-1.5 1V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/></svg>") !important;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+nav .logo:hover .logo-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+nav .logo-text {
+    font-size: 22px;
+    color: #333333;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+nav .logo-text .highlight {
+    color: #4a9edf !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+/* ナビゲーションメニュー（文字太さ700） */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700; /* 太さをキープ */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #4a9edf;
+}
+
+/* ==========================================================================
+   メインレイアウト ＆ 各セクション
+   ========================================================================== */
+main {
+    margin-top: 70px; /* ヘッダーに被らないように調整 */
+}
+
+/* メインビジュアル */
+.hero-section {
+    background: linear-gradient(135deg, #1e3a8a 0%, #4a9edf 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* コンテナ */
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.bg-light {
+    background-color: #f0fdf4; /* 薄い緑色の背景でアクセント */
+    padding: 40px 20px;
+    border-radius: 16px;
+}
+
+/* タイトルスタイル */
+.section-title {
+    font-size: 26px;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #4a9edf;
+    border-radius: 2px;
+}
+
+.section-sub-title {
+    text-align: center !important;
+    font-size: 16px;
+    color: #666666;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   コンポーネント（タイムライン、数値強調、テーブル、アドバイス）
+   ========================================================================== */
+
+/* 1. タイムライン */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 4px solid #e2e8f0;
+    margin-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: -55px;
+    top: 2px;
+    background-color: #4a9edf;
+    color: #ffffff;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.timeline-panel {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+}
+
+.timeline-panel h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.timeline-panel p {
+    font-size: 15px;
+    color: #4b5563;
+}
+
+/* 2. パスポート数値強調ボックス */
+.passport-alert-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    gap: 30px;
+    border-left: 6px solid #22c55e;
+}
+
+.number-focus {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.big-num {
+    font-size: 72px;
+    font-weight: 900;
+    color: #22c55e;
+    line-height: 1;
+    display: block;
+}
+
+.num-unit {
+    font-size: 14px;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+.alert-text h3 {
+    color: #166534;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.alert-text p {
+    font-size: 15px;
+    color: #374151;
+}
+
+/* 3. ルール比較テーブル */
+.rule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 40px;
+}
+
+.rule-table th {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    padding: 15px 20px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.rule-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 15px;
+}
+
+.rule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.status-ok {
+    color: #166534;
+    font-weight: 700;
+}
+.status-ok i {
+    color: #22c55e;
+    margin-right: 5px;
+}
+
+.status-ng {
+    color: #991b1b;
+    font-weight: 700;
+}
+.status-ng i {
+    color: #ef4444;
+    margin-right: 5px;
+}
+
+/* 4. アドバイスボックス */
+.advice-box {
+    background-color: #eef7fc;
+    border-left: 5px solid #4a9edf;
+    padding: 20px;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    margin-top: 30px;
+}
+
+.advice-badge {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background-color: #4a9edf;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.advice-box p {
+    font-size: 14px;
+    color: #1e3a8a;
+    margin: 0;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 80px;
+}
+/* 1. タイムライン（バッジの文字被りを完全に修正） */
+.timeline {
+    position: relative;
+    padding-left: 50px; /* 左側の余白を広げて文字と被るのを防ぐ */
+    border-left: 4px solid #e2e8f0;
+    margin-left: 40px; /* 全体を少し右に寄せてバランスを取る */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 一直線の縦線の中央に完璧に配置されるよう調整 */
+.timeline-badge {
+    position: absolute;
+    left: -101px; /* 縦線の真上にバッジのセンターが来るように調整 */
+    top: 0;
+    width: 98px; /* バッジの横幅を固定 */
+    text-align: center;
+    background-color: #4a9edf;
+    color: #ffffff;
+    padding: 5px 0;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.timeline-panel {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+}
+
+.timeline-panel h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.timeline-panel p {
+    font-size: 15px;
+    color: #4b5563;
+}
+
+
+/* ==========================================================================
+   新機能の追加CSS（目次 ＆ チェックリスト）※ファイルの最下部に追加してください
+   ========================================================================== */
+
+/* 目次のデザイン */
+.toc-section {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+}
+
+.toc-box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.toc-title {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 5px;
+}
+
+.toc-list li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+/* 目次のリンクにマウスを乗せたら少し右に動く */
+.toc-list li a:hover {
+    color: #4a9edf;
+    padding-left: 5px;
+}
+
+/* スムーズスクロールを有効にする（目次を押した時になめらかに動く） */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* ヘッダーに文字が被らないようにストップ位置を調整 */
+}
+
+/* チェックリストのデザイン */
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.checklist-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.checklist-card h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eef7fc;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4b5563;
+    user-select: none;
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #4a9edf; /* チェックボックスの色をテーマカラーに */
+}
+
+/* チェックを入れたら文字を少し薄くする演出 */
+.check-item input[type="checkbox"]:checked + span {
+    color: #9ca3af;
+    text-decoration: line-through;
+}

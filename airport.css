@@ -1,0 +1,403 @@
+/* ==========================================================================
+   共通設定 ＆ ヘッダー（共通デザインシステム継承）
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    color: #333333;
+    background-color: #f8fafc;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+nav .logo {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Arial Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+nav .logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #eef7fc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M21 16v-2l-8-5V3.5c0-.83-.67-1-1.5-1s-1.5.17-1.5 1V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/></svg>") !important;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+nav .logo:hover .logo-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+nav .logo-text {
+    font-size: 22px;
+    color: #333333;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+nav .logo-text .highlight {
+    color: #4a9edf !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #4a9edf;
+}
+
+/* ==========================================================================
+   レイアウト ＆ 背景
+   ========================================================================== */
+main {
+    margin-top: 70px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #111827 0%, #374151 100%); /* シックな空港をイメージしたダークグレー */
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.bg-light {
+    background-color: #f0fdf4; /* 入国セクション：安心感のあるグリーン */
+    padding: 40px 20px;
+    border-radius: 16px;
+}
+
+.bg-light-blue {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 40px 20px;
+    border-radius: 16px;
+}
+
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #4a9edf;
+    border-radius: 2px;
+}
+
+.section-sub-title {
+    text-align: center !important;
+    font-size: 16px;
+    color: #666666;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   各コンポーネントの装飾
+   ========================================================================== */
+
+/* ページ内目次 */
+.toc-section {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+}
+
+.toc-box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.toc-title {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 5px;
+}
+
+.toc-list li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.toc-list li a:hover {
+    color: #4a9edf;
+    padding-left: 5px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* 1. 空港の縦並びステップカード */
+.airport-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+    position: relative;
+}
+
+.step-num {
+    display: inline-block;
+    background-color: #1e3a8a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.label-green {
+    background-color: #22c55e !important;
+}
+
+.step-card h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.step-card p {
+    font-size: 14px;
+    color: #4b5563;
+    text-align: justify;
+}
+
+/* 2. 英会話フレーズ集 */
+.phrase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.phrase-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+}
+
+.english-q {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.q-badge {
+    background-color: #fee2e2;
+    color: #ef4444;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.english-q p {
+    font-size: 18px;
+    color: #111827;
+}
+
+.answer-example {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding-top: 12px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.a-badge {
+    background-color: #e0f2fe;
+    color: #0284c7;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.answer-example p {
+    font-size: 15px;
+    color: #4b5563;
+}
+
+.eng-a {
+    font-weight: 700;
+    color: #1e3a8a;
+}
+
+/* 3. 注意点・トラブルグリッド */
+.trouble-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.trouble-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.trouble-card h3 {
+    font-size: 17px;
+    color: #b91c1c; /* 注意を促すための深い赤 */
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trouble-card p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* 4. おなじみアドバイスボックス */
+.advice-box {
+    background-color: #eef7fc;
+    border-left: 5px solid #4a9edf;
+    padding: 20px;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+}
+
+.advice-badge {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background-color: #4a9edf;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.advice-box p {
+    font-size: 14px;
+    color: #1e3a8a;
+    margin: 0;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 80px;
+}

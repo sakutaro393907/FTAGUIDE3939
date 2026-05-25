@@ -1,0 +1,728 @@
+@charset "UTF-8";
+
+/* ==========================================
+   全体の共通設定
+   ========================================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: #333333;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    margin-top: 76px; /* 固定ヘッダーの下にコンテンツが潜り込むのを防ぐ */
+}
+
+/* ==========================================
+   ナビゲーション（ヘッダー上部）
+   ========================================== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* 【完全一致】ホーム画面と同じ飛行機ロゴ */
+nav .logo {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Arial Black', Impact, sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+/* 飛行機アイコンの丸い背景とSVG画像 */
+nav .logo-icon {
+  width: 36px;
+  height: 36px;
+  background-color: #eef7fc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M21 16v-2l-8-5V3.5c0-.83-.67-1-1.5-1s-1.5.17-1.5 1V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/></svg>") !important;
+  background-size: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+/* マウスホバーで動く演出 */
+nav .logo:hover .logo-icon {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* ロゴのテキストスタイル */
+nav .logo-text {
+  font-size: 22px;
+  color: #333333;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+/* GUIDEの文字だけ青色にするアクセント */
+nav .logo-text .highlight {
+  color: #4a9edf !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #4a9edf;
+}
+
+/* ==========================================
+   ヒーローエリア（メインビジュアル・他ページと完全一致）
+   ========================================== */
+.hero-section {
+    background: linear-gradient(135deg, #4a9edf 0%, #1e3a8a 100%); /* さわやかで深みのあるブルーグラデーション */
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #ffffff !important;
+    letter-spacing: 1px;
+}
+
+.hero-section p {
+    font-size: 18px;
+    opacity: 0.9;
+    color: #ffffff !important;
+    margin: 0;
+}
+
+/* ==========================================
+   目次セクション（TOC）
+   ========================================== */
+.toc {
+    padding: 60px 50px;
+    text-align: center;
+}
+
+.toc h2 {
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+/* 目次の文字の下線 */
+.toc h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background-color: #1a73e8;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: #333333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card .num {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+/* アイコン共通設定（丸い背景） */
+.card .icon {
+    width: 60px;
+    height: 60px;
+    background-color: #eef7fc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 36px;
+}
+
+/* 目次カード用：SVGインラインアイコン */
+.card .icon.passport {
+    background-size: 28px 38px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 38'><rect width='28' height='38' rx='3' fill='%237D222B'/><circle cx='14' cy='15' r='4' fill='none' stroke='%23E9C46A' stroke-width='1.5'/><circle cx='14' cy='15' r='1.5' fill='%23E9C46A'/><line x1='6' y1='6' x2='9' y2='6' stroke='%23E9C46A' stroke-width='1.5'/><line x1='19' y1='6' x2='22' y2='6' stroke='%23E9C46A' stroke-width='1.5'/><rect x='7' y='24' width='14' height='9' fill='none' stroke='%23E9C46A' stroke-width='1'/><circle cx='11' cy='28' r='2' fill='%23E9C46A'/><path d='M7,33 Q11,30 15,33' fill='none' stroke='%23E9C46A' stroke-width='1'/></svg>");
+}
+.card .icon.globe {
+    background-size: 38px 34px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 34'><path d='M1,5 C1,2.2 3.2,0 6,0 L24,0 C26.8,0 29,2.2 29,5 L29,17 C29,19.8 26.8,22 24,22 L16,22 L8,28 L8,22 L6,22 C3.2,22 1,19.8 1,17 Z' fill='none' stroke='%231a73e8' stroke-width='2'/><text x='5' y='15' font-family='Arial, sans-serif' font-size='8' font-weight='bold' fill='%231a73e8'>ABC</text><path d='M14,13 C14,11.3 15.3,10 17,10 L32,10 C33.7,10 35,11.3 35,13 L35,21 C35,22.7 33.7,24 32,24 L29,24 L25,29 L25,24 L17,24 C15.3,24 14,22.7 14,21 Z' fill='%23eef7fc' stroke='%231a73e8' stroke-width='1.5'/><text x='19' y='20' font-family='Arial, sans-serif' font-size='7' font-weight='bold' fill='%231a73e8'>HI</text></svg>");
+}
+.card .icon.safe {
+    background-size: 36px 36px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><path d='M12,18 L32,18 C33.1,18 34,18.9 34,20 L34,28 C34,29.1 33.1,30 32,30 L12,30 Z' fill='%231a73e8'/><circle cx='28' cy='24' r='2' fill='%23ffffff'/><path d='M2,28 L10,24 L14,26 L22,22 L24,24' fill='none' stroke='%231a73e8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M18,18 L18,11 C18,9.9 18.9,9 20,9 L30,9 C31.1,9 32,9.9 32,11 L32,18' fill='none' stroke='%231a73e8' stroke-width='2'/><path d='M21,14 L29,14 M25,11 L25,17' stroke='%231a73e8' stroke-width='1.5'/></svg>");
+}
+.card .icon.plane {
+    background-size: 34px 34px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'><rect x='5' y='6' width='24' height='24' rx='4' fill='none' stroke='%231a73e8' stroke-width='2.5'/><path d='M12,6 L12,2 L22,2 L22,6' fill='none' stroke='%231a73e8' stroke-width='2' stroke-linecap='round'/><path d='M9,6 L9,30 M25,6 L25,30' stroke='%231a73e8' stroke-width='1.5'/><path d='M13,11 L21,19 M21,11 L13,19' stroke='%231a73e8' stroke-width='3' stroke-linecap='round'/></svg>");
+}
+
+.card p {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ==========================================
+   コンテンツセクション（概要エリア共通）
+   ========================================== */
+.content {
+    background-color: #f7faff;
+    margin: 40px auto;
+    border-radius: 16px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
+}
+
+/* 偶数セクション用：左右反転レイアウト */
+.content.inverse {
+    flex-direction: row-reverse;
+    background-color: #ffffff;
+    border: 1px solid #eef7fc;
+}
+
+.content .left {
+    flex: 1;
+}
+
+/* 大きな数字セクション番号（01, 02..） */
+.content .left h2 {
+    font-size: 48px;
+    color: #1a73e8;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+/* セクションタイトル */
+.content .left h3 {
+    font-size: 24px;
+    margin: 0 0 25px 0;
+    color: #333333;
+}
+
+/* チェックマーク付きリスト */
+.content .left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.content .left ul li {
+    font-size: 16px;
+    position: relative;
+    padding-left: 30px;
+    color: #444444;
+}
+
+.content .left ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: #1a73e8;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 各セクションの写真表示エリア（共通） */
+.passport-photo, .english-photo, .safe-photo, .miss-photo {
+    flex: 1;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 各写真のURL定義 */
+.passport-photo { background-image: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80'); }
+.english-photo { background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80'); }
+.safe-photo    { background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80'); }
+.miss-photo    { background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=800&q=80'); }
+
+/* ==========================================
+   詳細エリア共通（3カラム・グリッド共通）
+   ========================================== */
+.details-section {
+    padding: 60px 50px 80px 50px;
+    background-color: #ffffff;
+}
+
+/* 背景が薄いブルーになるバリエーション（02, 04セクション等で使用） */
+.details-section.bg-blue {
+    background-color: #f7faff;
+}
+
+.details-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.details-section .section-sub-title {
+    text-align: center;
+    font-size: 20px;
+    color: #1a73e8;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* 基本のグリッド設定（3枚が横一列に並ぶ） */
+.detail-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* カードの共通デザイン */
+.detail-card {
+    flex: 1;
+    background-color: #f7faff; /* 通常時は薄いブルー */
+    border-radius: 12px;
+    padding: 40px 25px 30px 25px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(26, 115, 232, 0.03);
+    border: 1px solid #eef7fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 背景が薄いブルーのセクション内では、カードを白にして引き立たせる */
+.details-section.bg-blue .detail-card {
+    background-color: #ffffff;
+}
+
+/* POINTバッジ */
+.detail-card .badge {
+    position: absolute;
+    top: -15px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 詳細エリアのアイコン共通設定 */
+.detail-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.detail-card h4 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    color: #333333;
+}
+
+.detail-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+    text-align: left;
+}
+
+.detail-card p strong {
+    color: #1a73e8;
+}
+
+/* 変更後：こちらに差し替えてください */
+.miss-details-grid {
+    display: flex;
+    justify-content: flex-start; /* 左詰めで並べる */
+    flex-wrap: wrap;             /* 3個超えたら自動で下段に折り返す */
+    gap: 30px;                   /* カード同士の間隔 */
+    margin-bottom: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.miss-details-grid .detail-card {
+    /* 隙間（30px × 2箇所 = 60px）を引いた全体から、きっちり3分割(横3つ)する計算式 */
+    flex: 0 0 calc((100% - 60px) / 3); 
+    min-width: 280px;            /* 画面が狭くなったときの最小幅 */
+    box-sizing: border-box;
+}
+/* ==========================================
+   詳細エリア用：インラインSVGアイコン（全種）
+   ========================================== */
+/* 01 パスポート用 */
+.detail-icon.duration { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/></svg>"); }
+.detail-icon.buffer   { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-4.03-9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z'/></svg>"); }
+.detail-icon.backup   { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v11z'/></svg>"); }
+
+/* 03 防犯用 */
+.detail-icon.alert-icon { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v6h-2V7zm0 8h2v2h-2v-2z'/></svg>"); }
+.detail-icon.money-icon { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z'/></svg>"); }
+.detail-icon.talk-icon  { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z'/></svg>"); }
+
+/* 04 よくあるミス用（全6種） */
+.detail-icon.clock-icon   { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/></svg>"); }
+.detail-icon.weight-icon  { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z'/></svg>"); }
+.detail-icon.wifi-icon    { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01zM3.53 9.51C5.68 7.74 8.71 6.5 12 6.5c3.29 0 6.32 1.24 8.47 3.01L12 19.99l-8.47-10.48z'/></svg>"); }
+.detail-icon.battery-icon { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM12 18l-4-4h2.5v-4h3v4H16l-4 4z'/><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' fill='%23d93025'/></svg>"); }
+.detail-icon.price-icon   { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M12 2C6.48 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/><path d='M4 11h3v7H4zm13 0h3v7h-3z' fill='%231a73e8'/><path d='M16 6l1.25-1.25L13.5 1 9.75 4.75 11 6l2.5-2.5z' fill='%23d93025'/></svg>"); }
+.detail-icon.water-icon   { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M18 7c0-1.1-.9-2-2-2h-3V2h-2v3H8c-1.1 0-2 .9-2 2v2h12V7zM12 11.8c-2.9 0-5.3 2.4-5.3 5.3s2.4 5.3 5.3 5.3 5.3-2.4 5.3-5.3-2.4-5.3-5.3-5.3z'/><circle cx='12' cy='16' r='2' fill='%23d93025'/></svg>"); }
+
+/* ==========================================
+   ワンポイント・アドバイスボックス各種
+   ========================================== */
+.advice-box {
+    background-color: #fef7e0; /* 優しい黄色（注意） */
+    border-left: 5px solid #f9ab00;
+    padding: 20px 30px;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.advice-tag {
+    font-weight: bold;
+    color: #b06000;
+    font-size: 15px;
+}
+
+.advice-box p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444444;
+}
+
+/* 02 英語セクション用：マジックボックス（グリーン） */
+.advice-box.magic-box {
+    background-color: #e6f4ea; 
+    border-left: 5px solid #137333;
+}
+.advice-box.magic-box .advice-tag {
+    color: #137333;
+}
+
+/* 03 防犯セクション用：エマージェンシーボックス（ピンク・赤） */
+.advice-box.emergency-box {
+    background-color: #fce8e6; 
+    border-left: 5px solid #d93025;
+}
+.advice-box.emergency-box .advice-tag {
+    color: #c5221f;
+}
+
+/* ==========================================
+   02 英語セクション専用：英会話フレーズ設定
+   ========================================== */
+.detail-card h5.pattern-meaning {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin: 0 0 10px 0;
+}
+
+.detail-card p.pattern-desc {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eef7fc;
+    width: 100%;
+}
+
+.phrase-item {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+}
+.phrase-item:last-child {
+    margin-bottom: 0;
+}
+
+.phrase-item .usage {
+    display: inline-block;
+    font-size: 11px;
+    color: #1a73e8;
+    background-color: #eef7fc;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.phrase-item .jp {
+    font-size: 12px;
+    color: #777777;
+    margin: 0 0 2px 0;
+}
+
+.phrase-item .en {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+}
+
+/* ==========================================
+   レスポンシブ対応（スマートフォン・タブレット）
+   ========================================== */
+@media (max-width: 992px) {
+    /* タブレット時は6項目を2列にする */
+    .miss-details-grid .detail-card {
+        flex: 0 1 calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 20px;
+    }
+    .hero-section {
+        padding: 60px 20px;
+    }
+    .content, .content.inverse {
+        flex-direction: column;
+        margin: 20px;
+        padding: 30px 20px;
+    }
+    .detail-grid, .miss-details-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .miss-details-grid .detail-card {
+        flex: 1 1 100%;
+    }
+    .details-section {
+        padding: 40px 20px;
+    }
+}
+/* ==========================================
+   詳細エリアの小見出しを強制的に中央寄せにする
+   ========================================== */
+.section-sub-title, 
+.passport-details .section-sub-title,
+.english-details .section-sub-title,
+.safe-details .section-sub-title {
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+/* ==========================================
+   目次直下の「海外あるある」横長リンクボタン
+   ========================================== */
+.toc-aruaru-container {
+    max-width: 800px;
+    margin: 25px auto 0 auto;
+    padding: 0 10px;
+}
+
+.toc-aruaru-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); /* 目を引くオレンジグラデ */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 18px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(245, 124, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.toc-aruaru-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 124, 0, 0.3);
+    opacity: 0.95;
+}
+
+.toc-aruaru-btn .btn-icon {
+    font-size: 16px;
+    animation: bounce 2s infinite; /* 下矢印をかわいく上下に動かす */
+}
+
+/* 矢印がピョコピョコ動くアニメーション */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+/* ==========================================
+   海外あるあるセクション（全12選・完全版）
+   ========================================== */
+.aruaru-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.aruaru-title {
+    text-align: center;
+    font-size: 26px;
+    color: #333333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.aruaru-subtitle {
+    text-align: center;
+    color: #666666;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+/* 画面サイズに合わせて自動で2列〜3列に並ぶグリッド */
+.aruaru-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 15px;
+}
+
+/* あるあるカード1枚ずつのデザイン */
+.aruaru-card {
+    background: #f8fbff;
+    border: 1px solid #eef4fc;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* マウスを乗せたときにフワッと浮かせる */
+.aruaru-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(26, 115, 232, 0.08);
+    background: #ffffff; /* ホバー時に白背景にして目立たせる */
+}
+
+/* アイコンの共通スタイル */
+.aruaru-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* 1〜4番（現地での驚き）：ブルー */
+.aruaru-grid .aruaru-card:nth-child(-n+4) .aruaru-icon {
+    color: #1a73e8;
+}
+
+/* 5 ~ 8番（インフラ・交通・交通ルールなど）：イエロー/オレンジ */
+.aruaru-grid .aruaru-card:nth-child(n+5):nth-child(-n+8) .aruaru-icon {
+    color: #ff9800;
+}
+
+/* 9〜12番（食事・買い物・日本最高！）：グリーン/ピンク系 */
+.aruaru-grid .aruaru-card:nth-child(n+9) .aruaru-icon {
+    color: #2e7d32;
+}
+
+.aruaru-card h3 {
+    font-size: 16.5px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.aruaru-card p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* スマホ表示（画面が狭いとき）は縦1列に */
+@media (max-width: 600px) {
+    .aruaru-grid {
+        grid-template-columns: 1fr;
+    }
+}

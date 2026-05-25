@@ -1,0 +1,598 @@
+/* ==========================================================================
+   共通設定 ＆ ヘッダー（共通デザインシステム継承）
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    color: #333333;
+    background-color: #f8fafc;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+nav .logo {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Arial Black', Impact, sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+nav .logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #eef7fc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><path d='M21 16v-2l-8-5V3.5c0-.83-.67-1-1.5-1s-1.5.17-1.5 1V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/></svg>") !important;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+nav .logo:hover .logo-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+nav .logo-text {
+    font-size: 22px;
+    color: #333333;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+nav .logo-text .highlight {
+    color: #4a9edf !important;
+    font-weight: 900 !important;
+    text-decoration: none !important;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #4a9edf;
+}
+
+/* ==========================================================================
+   レイアウト ＆ 背景バリエーション
+   ========================================================================== */
+main {
+    margin-top: 70px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.bg-light {
+    background-color: #f0f9ff; /* 通信セクション用：爽やかな薄い青 */
+    padding: 60px 30px !important; /* 内部パーツの余白を確保するために少し広げました */
+    border-radius: 16px;
+}
+
+.bg-light-orange {
+    background-color: #fff7ed; /* マナーセクション用：落ち着いた薄いオレンジ */
+    padding: 40px 20px;
+    border-radius: 16px;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #4a9edf;
+    border-radius: 2px;
+}
+
+.section-sub-title {
+    text-align: center !important;
+    font-size: 16px;
+    color: #666666;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   パーツ・コンポーネント
+   ========================================================================== */
+
+/* ページ内目次 */
+.toc-section {
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+}
+
+.toc-box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.toc-title {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 5px;
+}
+
+.toc-list li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.toc-list li a:hover {
+    color: #4a9edf;
+    padding-left: 5px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* 2カラムレイアウト */
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.column-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.column-card h3 {
+    font-size: 18px;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.column-card p {
+    font-size: 14px;
+    color: #4b5563;
+    text-align: justify;
+}
+
+/* 配車アプリ情報ボックス */
+.app-info-box {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    border-left: 6px solid #1e3a8a;
+    border-top: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.app-text h3 {
+    color: #1e3a8a;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.app-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.app-text ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #4b5563;
+}
+
+.app-text ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4a9edf;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* アドバイスボックス */
+.advice-box {
+    background-color: #fef2f2;
+    border-left: 5px solid #ef4444;
+    padding: 20px;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+}
+
+.advice-badge {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.advice-box p {
+    font-size: 14px;
+    color: #991b1b;
+    margin: 0;
+}
+
+/* 防犯グリッド（3分割） */
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.safety-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.safety-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: #e2e8f0;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+}
+
+.safety-card h3 {
+    font-size: 17px;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    padding-right: 40px;
+}
+
+.safety-card p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 80px;
+}
+
+/* ==========================================
+   クレジットカード：通貨選択の罠デザイン
+   ========================================== */
+.currency-trap-box {
+    background-color: #fffde7;
+    border: 2px dashed #f57c00;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.trap-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.trap-icon {
+    font-size: 24px;
+    color: #f57c00;
+}
+
+.trap-header h3 {
+    margin: 0;
+    color: #e65100;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.trap-lead {
+    font-size: 14.5px;
+    color: #444444;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.trap-choice {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.choice-box {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.choice-ng { border: 2px solid #ef5350; }
+.choice-ok { border: 2px solid #66bb6a; }
+
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.badge-ng { background-color: #ef5350; }
+.badge-ok { background-color: #66bb6a; }
+
+.choice-box h4 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.choice-box p {
+    font-size: 13.5px;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.trap-summary {
+    background-color: #f57c00;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    text-align: center;
+}
+.trap-summary strong {
+    font-size: 16px;
+}
+
+/* ==========================================
+   ネット環境（SIM vs WiFi）セクション
+   ========================================== */
+.comm-compare-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    align-items: stretch;
+}
+
+.comm-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 40px 30px 30px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.comm-card.recommended {
+    border: 2px solid #22c55e;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.08);
+}
+
+.recommend-ribbon {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22c55e;
+    color: #ffffff;
+    padding: 4px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.comm-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    font-size: 32px;
+}
+.sim-icon { background-color: #e8fafd; color: #06b6d4; }
+.wifi-icon { background-color: #eff6ff; color: #3b82f6; }
+
+.comm-card h3 {
+    font-size: 22px;
+    color: #1e293b;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.comm-lead {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.pros-cons {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.point-box {
+    padding: 15px 18px;
+    border-radius: 10px;
+}
+.point-box.pros { background-color: #f0fdf4; }
+.point-box.cons { background-color: #fff1f2; }
+
+.point-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.pros .point-title { color: #166534; }
+.cons .point-title { color: #991b1b; }
+
+.point-box ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.point-box li {
+    font-size: 13.5px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 5px;
+    list-style-type: disc;
+}
+.point-box li:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   レスポンシブ・スマートフォン対応（一括統合）
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* ナビゲーション */
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    main {
+        margin-top: 110px;
+    }
+    
+    /* レイアウト崩れの防止 */
+    .two-column, 
+    .comm-compare-container, 
+    .trap-choice {
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+    }
+    
+    .comm-card {
+        padding: 35px 20px 25px 20px;
+    }
+}
