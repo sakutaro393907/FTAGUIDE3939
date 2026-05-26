@@ -15,8 +15,6 @@ body {
 }
 
 header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     position: fixed;
     top: 0;
     left: 0;
@@ -24,15 +22,24 @@ header {
     z-index: 1000;
 }
 
+/* ==========================================================================
+   【修正】ナビゲーションの位置を見本（index.html）と完全に一致させる
+   ========================================================================== */
 nav {
+    position: fixed;   /* 画面の一番上に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;       /* 横幅を画面いっぱいに広げる（見本と統一） */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 20px;
+    padding: 25px 60px; /* ★ここを60pxにすることで、見本のロゴ位置と完全一致します */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* ★影の命令をここに引越し */
+    z-index: 1000;
+    box-sizing: border-box; /* はみ出し防止 */
 }
-
 /* 飛行機ロゴ（下線強制クリア・ホームリンク対応） */
 nav .logo {
     display: flex !important;
